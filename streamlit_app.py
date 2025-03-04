@@ -1,7 +1,5 @@
 import streamlit as st
 import pandas as pd
-import folium
-from streamlit_folium import folium_static
 
 # Configuração do layout
 st.set_page_config(page_title="Dashboard de Dados de Estupro", layout="wide")
@@ -37,17 +35,7 @@ if 'Cidade' in df1.columns:
     df1 = df1[df1['Cidade'].isin(cidade_selecionada)]
     st.sidebar.write(f"Dados filtrados para {len(df1)} registros.")
 
-# Mapa Interativo
-st.subheader("Mapa Interativo de Ocorrências")
-if 'Latitude' in df1.columns and 'Longitude' in df1.columns:
-    mapa = folium.Map(location=[df1['Latitude'].mean(), df1['Longitude'].mean()], zoom_start=5)
-    for _, row in df1.iterrows():
-        folium.Marker(
-            location=[row['Latitude'], row['Longitude']],
-            popup=row.get('Cidade', 'Localização'),
-            tooltip=row.get('Categoria', 'Ocorrência')
-        ).add_to(mapa)
-    folium_static(mapa)
+# Mapa removido pois Streamlit está sendo utilizado online
 else:
     st.warning("Dados de Latitude e Longitude não encontrados.")
 
