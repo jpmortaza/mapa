@@ -11,8 +11,8 @@ st.set_page_config(
 # Carregar os dados
 @st.cache_data
 def load_data():
-    df1 = pd.read_excel("Estupro de Vunerável - 2024.xlsx")
-    df2 = pd.read_excel("Estupro.xlsx")
+    df1 = pd.read_csv("Estupro de Vunerável - 2024.csv")
+    df2 = pd.read_csv("Estupro.csv")
     return df1, df2
 
 df1, df2 = load_data()
