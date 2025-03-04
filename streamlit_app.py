@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
 import folium
 from streamlit_folium import folium_static
 
@@ -29,28 +28,6 @@ with tab1:
 
 with tab2:
     st.dataframe(df2)
-
-# Criar gráficos interativos
-st.subheader("Análise Visual")
-
-col1, col2 = st.columns(2)
-
-# Gráfico 1 - Contagem por categoria
-with col1:
-    categoria_counts = df1.iloc[:, 0].value_counts()
-    fig1 = px.bar(categoria_counts, x=categoria_counts.index, y=categoria_counts.values,
-                  labels={'x': 'Categoria', 'y': 'Frequência'}, title="Distribuição por Categoria")
-    st.plotly_chart(fig1)
-
-# Gráfico 2 - Análise de Tendência Temporal
-with col2:
-    if 'Data' in df1.columns:
-        df1['Data'] = pd.to_datetime(df1['Data'])
-        df1.sort_values('Data', inplace=True)
-        trend = df1.groupby(df1['Data'].dt.to_period("M")).size()
-        fig2 = px.line(trend, x=trend.index.astype(str), y=trend.values,
-                       labels={'x': 'Data', 'y': 'Ocorrências'}, title="Tendência de Ocorrências ao Longo do Tempo")
-        st.plotly_chart(fig2)
 
 # Filtros interativos
 st.sidebar.header("Filtros")
