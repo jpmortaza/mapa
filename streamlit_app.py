@@ -41,7 +41,7 @@ if search_term:
 
 # Exibir dados
 st.subheader("Visualização dos Dados")
-st.experimental_data_editor(df1, num_rows="dynamic")
+st.dataframe(df1)
 
 # Download dos dados
 st.sidebar.subheader("Download dos Dados")
