@@ -48,8 +48,6 @@ if 'Latitude' in df1.columns and 'Longitude' in df1.columns:
     st.map(df1[['Latitude', 'Longitude']])
 else:
     st.warning("Dados de Latitude e Longitude não encontrados.")
-else:
-    st.warning("Dados de Latitude e Longitude não encontrados.")
 
 # Download dos dados
 st.sidebar.subheader("Download dos Dados")
